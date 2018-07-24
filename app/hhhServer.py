@@ -64,7 +64,7 @@ class MyHttpServer:
     # Handle the message from website	
 	def handleRequest(self,request,connectionSocket):
 		self.connectionSocket = connectionSocket
-		fp = open('Capture.html','rb')
+		fp = open('../templates/Capture.html','rb')
 		response_file = fp.read()
 		Content_Len = len(response_file)
 		fp.close()
