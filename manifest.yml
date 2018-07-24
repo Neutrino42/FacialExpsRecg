@@ -1,0 +1,5 @@
+---
+applications:
+ - name: Group4-Project
+   host: Group4-Project
+   memory: 128M
