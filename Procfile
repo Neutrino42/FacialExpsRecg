@@ -1,1 +1,1 @@
-web: python FacialExpsRecg.py
+web: python main.py
