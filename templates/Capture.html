@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>WebcamJS Test Page</title>
+	<title>Camera Capture Test Page</title>
 	<style type="text/css">
 		body { font-family: Helvetica, sans-serif; }
 		h2, h3 { margin-top:0; }
@@ -19,17 +19,23 @@
 </head>
 <body>	
 	<div class="left">
-		<h1>WebcamJS Test Page</h1>
-		<h3>Demonstrates continuous capture &amp; display</h3>
+		<h1>Camera Capture Test Page</h1>
+		<h3>Demonstrates with Camera &amp; display</h3>
 		
 		<div id="my_camera"></div>
 		
 		<!-- A button for taking snaps -->
-		<form>
+		<form method="post">
 			<input type="button" value="Start" onClick="start_snapping()">
 			<input type="button" value="Stop" onClick="stop_snapping()">
 			<input type="button" value="Clear" onClick="erase_snaps()">
+			<input type="button" value="Uploading" onClick="upload()">
 		</form>
+
+		<!-- <form action="" method=post enctype=multipart/form-data>
+			<p><input type=file name=file>
+			   <input type=submit value=Upload>
+		</form> -->
 	</div>
 	
 	<div class="right half">
@@ -68,7 +74,7 @@
 		function start_snapping() {
 			if (!timer) {
 				take_snapshot();
-				timer = setInterval( take_snapshot, 250 );
+				timer = setInterval( take_snapshot, 500);
 			}
 		}
 		
@@ -82,6 +88,58 @@
 		function erase_snaps() {
 			document.getElementById('results').innerHTML = '';
 		}
+
+		function upload() {
+			console.log("Uploading...")
+			var image = document.getElementById('results').src;
+			var form = 'jpeg';
+			var formData = new FormData(form);
+			formData.append("file", image);
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("POST", "/receive_photo");
+
+			// check when state changes, 
+			xmlhttp.onreadystatechange = function() {
+
+			if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				alert(xmlhttp.responseText);
+				}
+			}
+
+			xmlhttp.send(formData);
+			console.log(formData.get('file'));
+			// console.log(formData.get('userID'));
+		}
+
+
+		
+ 		/**
+         * 上传图片
+         */
+         $("#upload").on('click',function(){
+             $("#upfile").click();
+         });
+       
+        $("#upfile").on("change",upfile);
+ 
+        function upfile(){
+            $.ajaxFileUpload({
+                secureuri:false,
+                url:"upImg.aj",
+                dataType:"json",
+                //fileElementId是img标签的id
+                fileElementId:'upfile',
+                success:function(data){
+                    //上传成功后改变<img>标签的src地址，id参数其实不需要，主要是为了刷新img的图片资源。
+                    $("#upload").attr("src","getCurImg.aj?id="+data.message);
+                    //重新绑定事件，防止二次上传时失效
+                    $("#upfile").on("change",upfile);
+                }
+            });
+        }
+
+
+
 	</script>
 	
 </body>
