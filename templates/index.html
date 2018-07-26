@@ -3,6 +3,8 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/jquery-3.3.1.js"></script>
 	<title>Camera Capture Test Page</title>
 	<style type="text/css">
 		body { font-family: Helvetica, sans-serif; }
@@ -64,25 +66,30 @@
         } );      
     }
 
+
     function upload() {
-        // alert("我被调用了！！！！！！！！！！！！！！");
-        console.log("Uploading...")
         var image = document.getElementById('image').src;
         var form = document.getElementById('myForm');
         var formData = new FormData(form);
         formData.append("file", image);
-        // // alert(JSON.stringify(formData))
-        var xmlhttp = new XMLHttpRequest();
-        // alert(xmlhttp.open("POST", "/signup"));
-        xmlhttp.open('POST','/signup');
-        // check when state changes, 
-        xmlhttp.onreadystatechange = function() {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            alert('Success');
-            }
+
+        var object = {};
+        formData.forEach(function (value, key) {
+           object[key] = value;
+        });
+        var data = JSON.stringify(object);
+
+        $.ajax({
+        url:'/imageProcess',
+        type: 'POST',
+        dataType: 'json',
+        data: data,
+        success: function (result) {
+            alert(result.result);
+        }, error:function(err){
+            alert('连接失败');
         }
-        // xmlhttp.send(JSON.stringify(image));
-        xmlhttp.send(formData);
+    })
     }
 
 
