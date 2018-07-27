@@ -6,7 +6,6 @@ import json
 from watson_developer_cloud import VisualRecognitionV3
 
 
-
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -28,18 +27,19 @@ def image_process():
     # Using IBM watson Visual Recognition Model
     visual_recognition = VisualRecognitionV3(
         '2018-03-19',  # version
-        iam_api_key='pBwT3fGN4RBkPGyHhlI5mauax570lg3tjjP68bCdT4jJ')  # your API key
+        iam_api_key='vGG2QFloDD6S3Eo_4dGICrCHnNFtcCOFlDJDlhlgf4I4')  # your API key
 
     with open('./static/image/snapshot.jpg', 'rb') as images_file:
         classes = visual_recognition.classify(
             images_file,
             parameters=json.dumps({
-                'classifier_ids': ["food"]
+                'classifier_ids': ["emotion_1052263556"]
             }))
     result = json.dumps(classes, indent=2)
-    expression_result = eval(result)["images"][0]["classifiers"][0]["classes"][0]["class"]
+    # print(result)
+    expression_classes = eval(result)["images"][0]["classifiers"][0]["classes"][0]
 
-    return jsonify({'result': expression_result})
+    return jsonify({'result': expression_classes["class"], 'score': expression_classes["score"]})
 
 
 if __name__ == '__main__':
