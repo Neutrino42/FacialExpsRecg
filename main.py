@@ -36,7 +36,7 @@ def image_process():
                 'classifier_ids': ["emotion_1052263556"]
             }))
     result = json.dumps(classes, indent=2)
-    # print(result)
+    print(result)
     expression_classes = eval(result)["images"][0]["classifiers"][0]["classes"][0]
 
     return jsonify({'result': expression_classes["class"], 'score': expression_classes["score"]})
