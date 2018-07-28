@@ -1934,9 +1934,16 @@ pre code {
   }
 }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
   }
+
+  /* Modified ............................................................ */
+  .col-md-5{
+    float:right;
+  }
+
+
   .col-md-12 {
     width: 100%;
   }
@@ -1971,7 +1978,7 @@ pre code {
     width: 16.66666667%;
   }
   .col-md-1 {
-    width: 8.33333333%;
+    width: 40.33333333%;
   }
   .col-md-pull-12 {
     right: 100%;
