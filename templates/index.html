@@ -232,11 +232,14 @@
 									</form>
 									<div id="my_camera"></div>
 									<div id="results"><p>Your captured images will appear here...</p></div>
-									<!-- <output type="button" onclick="snap()" value="Snap"> -->
-									<pre id = "Result"></pre>10
+									<pre id = "Result"></pre>
+									<div id="FakeResult"><p> </p></div>
+
 									<script type = "text/javascript">
-										var result=[[${result.result}]];
-										document.getElementById('Result').innerText= result 
+										var result=[[$,{result: result}]];
+										// document.getElementById('Result').innerText= result 
+										document.getElementById('FakeResult').innerHTML =result ;
+        									// '';
 									</script>
 							</div>
 					</div>
