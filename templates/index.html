@@ -2,26 +2,33 @@
 
 <html lang="en-US">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="ThemeStarz">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="ThemeStarz">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<link href="../static/fonts/font-awesome.css" rel="stylesheet" type="text/css">
-<link href="../static/fonts/elegant-fonts.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-<link rel="stylesheet" href="../static/bootstrap/bootstrap.css" type="text/css">
-<link rel="stylesheet" href="../static/css/magnific-popup.css" type="text/css">
-<link rel="stylesheet" href="../static/css/style.css" type="text/css">
+	<link href="../static/fonts/font-awesome.css" rel="stylesheet" type="text/css">
+	<link href="../static/fonts/elegant-fonts.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="../static/bootstrap/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="../static/css/magnific-popup.css" type="text/css">
+	<link rel="stylesheet" href="../static/css/style.css" type="text/css">
 
-<title>Home</title>
+	<title>Home</title>
 
-<style>
-	body { background-color: #f3f3f3; }
-</style>
+	<style>
+		body { background-color: #f3f3f3; }
+	</style>
 
-<script>
-	var colors = ['255,103,103', '97,223,255', '255,232,88', '141,255,139'];
-</script>
+	<script>
+		var colors = ['255,103,103', '97,223,255', '255,232,88', '141,255,139'];
+	</script>
+	<script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/jquery-3.3.1.js"></script>
+    <!-- First, include the Webcam.js JavaScript Library -->
+    <script type="text/javascript" src="../static/js/webcam.min.js"></script>
+    <!-- Code to handle taking the snapshot and displaying it locally -->
+    <script language="JavaScript" src="../static/js/snap.js"></script>
 
 </head>
 
@@ -179,6 +186,11 @@
 </div>
 <!--end #modal-about-us-->
 
+
+
+
+
+
 <!-- Modal Our Works -->
 <div class="modal fade" id="modal-our-works" tabindex="-1" role="dialog" aria-labelledby="modal-our-works-label">
 <div class="modal-dialog" role="document">
@@ -190,102 +202,58 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-4 col-sm-4">
-						<a href="../static/image/1.jpg" class="work image-popup">
-							<div class="description">
-								<h4>Paperworks</h4>
-								<h5>Product Design</h5>
+					<div class="col-md-1 col-sm-1">
+
+							<div align="center">
+									<!-- <h4>Camera Capture Demo Page</h4>
+									<h4>Demonstrates with Camera &amp; Display</h4> -->
+									
+									<div id="my_camera"></div>
+									
+									
+									<!-- <input type="button" onclick="snap()" value="Snap"> -->
+									<!-- <div id="results"><p>Your captured images will appear here...</p></div> -->
 							</div>
-							<!--end description-->
-							<div class="image">
-								<div class="bg-transfer"><img src="../static/image/1.jpg" alt=""></div>
-							</div>
-						</a>
-						<!--end work-->
+
+							<!-- <div align ="right">
+									<input type="button" onclick="snap()" value="Snap">
+									<div id="results"><p>Your captured images will appear here...</p></div>
+							</div> -->
+
 					</div>
-					<!--end col-md-4-->
-					<div class="col-md-4 col-sm-4">
-						<a href="../static/image/2.jpg" class="work image-popup">
-							<div class="description">
-								<h4>Landscape</h4>
-								<h5>Illustration</h5>
+
+
+					<div class="col-md-5 col-sm-1">
+							<div>
+									<input type="button" onclick="snap()" value="Snap">
+									<!-- A button for taking snaps -->
+									<form method="POST" enctype="multipart/form-data" id="myForm" name = "myForm">
+										<input type="submit" value="Upload" onclick="upload()">
+									</form>
+									<div id="my_camera"></div>
+									<div id="results"><p>Your captured images will appear here...</p></div>
+									<!-- <output type="button" onclick="snap()" value="Snap"> -->
+									<pre id = "Result"></pre>10
+									<script type = "text/javascript">
+										var result=[[${result.result}]];
+										document.getElementById('Result').innerText= result 
+									</script>
 							</div>
-							<!--end description-->
-							<div class="image">
-								<div class="bg-transfer"><img src="../static/image/2.jpg" alt=""></div>
-							</div>
-						</a>
-						<!--end work-->
 					</div>
-					<!--end col-md-4-->
-					<div class="col-md-4 col-sm-4">
-						<a href="assets/img/3.jpg" class="work image-popup">
-							<div class="description">
-								<h4>Massa</h4>
-								<h5>Logo design</h5>
-							</div>
-							<!--end description-->
-							<div class="image">
-								<div class="bg-transfer"><img src="../static/image/3.jpg" alt=""></div>
-							</div>
-						</a>
-						<!--end work-->
-					</div>
-					<!--end col-md-4-->
-					<div class="col-md-4 col-sm-4">
-						<a href="../static/image/4.jpg" class="work image-popup">
-							<div class="description">
-								<h4>11Street</h4>
-								<h5>Logo design</h5>
-							</div>
-							<!--end description-->
-							<div class="image">
-								<div class="bg-transfer"><img src="../static/image/4.jpg" alt=""></div>
-							</div>
-						</a>
-						<!--end work-->
-					</div>
-					<!--end col-md-4-->
-					<div class="col-md-4 col-sm-4">
-						<a href="../static/image/5.jpg" class="work image-popup">
-							<div class="description">
-								<h4>App</h4>
-								<h5>Branding</h5>
-							</div>
-							<!--end description-->
-							<div class="image">
-								<div class="bg-transfer"><img src="../static/image/5.jpg" alt=""></div>
-							</div>
-						</a>
-						<!--end work-->
-					</div>
-					<!--end col-md-4-->
-					<div class="col-md-4 col-sm-4">
-						<a href="../static/image/6.jpg" class="work image-popup">
-							<div class="description">
-								<h4>Moon</h4>
-								<h5>Photography</h5>
-							</div>
-							<!--end description-->
-							<div class="image">
-								<div class="bg-transfer"><img src="../static/image/6.jpg" alt=""></div>
-							</div>
-						</a>
-						<!--end work-->
-					</div>
-					<!--end col-md-4-->
-				</div>
-				<!--end row-->
-			</div>
-			<!--end modal-body-->
+
+
+
+
+				</div>				
+			</div>	
 		</div>
-		<!--end modal-content-->
-	</div>
-	<!--end container-->
+	</div>	
 </div>
-<!--end modal-dialog-->
 </div>
-<!--end #modal-our-works-->
+
+
+
+
 
 <!-- Modal Services -->
 <div class="modal fade" id="modal-services" tabindex="-1" role="dialog" aria-labelledby="modal-services-label">
