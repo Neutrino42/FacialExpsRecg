@@ -37,7 +37,8 @@ function upload() {
     dataType: 'json',
     data: data,
     success: function (result) {
-        alert('You are having a ' + result.result + ' face, and scored ' + result.score);
+        // alert('You are having a ' + result.result + ' face, and scored ' + result.score);
+        
     }, error:function(err){
         alert('loading');
     }
