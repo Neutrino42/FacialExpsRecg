@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, jsonify, redirect
 import os
-import json
 import base64
 import json
 from watson_developer_cloud import VisualRecognitionV3
-
+# import matplotlib.image as mpimg
+# from PIL import
+# from scipy
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -33,13 +34,15 @@ def image_process():
         classes = visual_recognition.classify(
             images_file,
             parameters=json.dumps({
-                'classifier_ids': ["emotion_1052263556"]
+                'classifier_ids': ["emotion_KDEF_919313430"]
             }))
     result = json.dumps(classes, indent=2)
     print(result)
-    expression_classes = eval(result)["images"][0]["classifiers"][0]["classes"][0]
+    emo_class = eval(result)["images"][0]["classifiers"][0]["classes"][0]["class"]
+    emo_score = eval(result)["images"][0]["classifiers"][0]["classes"][0]["score"]
+    # emoji = mpimg.imread('static/image/' + emo_class+'.png')
 
-    return jsonify({'result': expression_classes["class"], 'score': expression_classes["score"]})
+    return jsonify({'result': emo_class, 'score': emo_score})
 
 
 if __name__ == '__main__':

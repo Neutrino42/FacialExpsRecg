@@ -95,19 +95,28 @@ function simpleMap(latitude, longitude, markerImage, mapTheme, mapElement){
     else if ( mapTheme == "dark" ){
         mapStyles = [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
     }
-    var mapCenter = new google.maps.LatLng(latitude,longitude);
-    var mapOptions = {
-        zoom: 13,
-        center: mapCenter,
-        disableDefaultUI: true,
-        scrollwheel: false,
-        styles: mapStyles
-    };
-    var element = document.getElementById(mapElement);
-    var map = new google.maps.Map(element, mapOptions);
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(latitude,longitude),
-        map: map,
-        icon: markerImage
-    });
+    // var mapCenter = new google.maps.LatLng(latitude,longitude);
+    // var mapOptions = {
+    //     zoom: 13,
+    //     center: mapCenter,
+    //     disableDefaultUI: true,
+    //     scrollwheel: false,
+    //     styles: mapStyles
+    // };
+    // var element = document.getElementById(mapElement);
+    // var map = new google.maps.Map(element, mapOptions);
+    // var marker = new google.maps.Marker({
+    //     position: new google.maps.LatLng(latitude,longitude),
+    //     map: map,
+    //     icon: markerImage
+    // });
+    // The location of Uluru
+    var uluru = {lat: 1.29595, lng: 103.77525};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+
+    document.getElementById("map").src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDwqkE4imSyiLvuhGooEmJ2b7Mr90ZmWUk&callback=initMap"
 }

@@ -1,1 +1,1 @@
-web: python app/FaceDetection.py
+web: python main.py
